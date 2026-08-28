@@ -25,7 +25,7 @@ yum install -y redis
 ![yum安装redis客户端](images/3.png)
 （图片太长，只截图前半段）最后出现Complete安装完成
 
-1. 使用 redis‑cli 客户端直接连接目标，不需要输入密码
+1. 使用 redis‑cli 客户端直接连接目标
 ```
 redis‑cli -h 靶机IP -p 端口
 
@@ -48,7 +48,9 @@ info
 ## 测试能否写入
 
 尝试写入
+
 ![测试](images/6.png)
+
 
 ···
 config get dir           # 当前数据存储目录：/data
