@@ -11,7 +11,7 @@ apt update
 apt install docker.io docker-compose -y
 systemctl start docker
 systemctl enable docker
-
+```
 
 
 ### 下载 Vulhub 靶场
@@ -19,7 +19,7 @@ systemctl enable docker
 ```
 git clone https://github.com/vulhub/vulhub.git
 cd vulhub
-
+```
 
 ### 通用操作
 
