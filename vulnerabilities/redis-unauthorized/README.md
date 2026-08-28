@@ -96,9 +96,9 @@ bgsave
 #### 重要实验总结
 
 在 Docker Vulhub 环境中，该利用链无法完成最终 SSH 登录，原因如下：
-- 1. Redis 官方镜像 entrypoint 脚本会强制降权为普通用户运行，规避 root 写入权限；
-- 2. bgsave 生成的 RDB 文件自带 REDIS0008 二进制文件头，污染公钥文件，导致 SSH 认证失败；
-- 3. Docker 容器无 SSH 服务、文件系统隔离，写入为容器内文件，无法穿透到宿主机。
+- 1、Redis 官方镜像 entrypoint 脚本会强制降权为普通用户运行，规避 root 写入权限；
+- 2、bgsave 生成的 RDB 文件自带 REDIS0008 二进制文件头，污染公钥文件，导致 SSH 认证失败；
+- 3、Docker 容器无 SSH 服务、文件系统隔离，写入为容器内文件，无法穿透到宿主机。
 但任意文件写入漏洞能力已完全验证，真实物理机环境可完整 Getshell。
 
 ### 方式二：Redis 4.x 模块加载 RCE 反弹 Shell（真实 Getshell）
