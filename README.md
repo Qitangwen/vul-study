@@ -5,12 +5,14 @@
 
 ## 环境准备
 
-### 1. 安装依赖（Ubuntu/Debian）
+### 安装依赖（Ubuntu/Debian）
 ```bash
 apt update
 apt install docker.io docker-compose -y
 systemctl start docker
 systemctl enable docker
+
+
 
 ### 下载 Vulhub 靶场
 
