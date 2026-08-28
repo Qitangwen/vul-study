@@ -29,7 +29,7 @@ yum install -y redis
 ```
 redis‑cli -h 靶机IP -p 端口
 
-redis‑cli -h 172.18.0.2 -p 6379
+redis‑cli -h 10.165.15.225 -p 6379
 ```
 2. 连接成功后执行 info 命令
 ```
