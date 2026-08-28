@@ -17,6 +17,13 @@ docker‑compose up -d
 
 ## 复现步骤
 
+### 准备连接工具
+宿主机安装 redis 客户端，提供 redis‑cli 命令用于连接靶场Redis服务
+![yum安装redis客户端](images/3.png)
+```bash
+yum install -y redis
+```
+
 1. 使用 redis‑cli 客户端直接连接目标，不需要输入密码
 ```
 redis‑cli -h 172.18.0.2
