@@ -6,3 +6,6 @@
 ```bash
 git clone https://github.com/vulhub/vulhub.git
 cd vulhub
+- 靶场容器IP：172.18.0.2
+- 连接命令：redis-cli -h 172.18.0.2
+- 漏洞现象：无需密码直接登录Redis，执行info、keys等命令获取配置与数据
