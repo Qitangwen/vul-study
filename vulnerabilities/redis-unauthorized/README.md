@@ -30,6 +30,8 @@ yum install -y redis
 redis‑cli -h靶机容器IP
 通过docker inspect 得到容器IP为 172.18.0.2
 ···
+
+
 ···
 redis‑cli -h 172.18.0.2
 ```
