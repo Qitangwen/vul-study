@@ -5,14 +5,19 @@
 
 ## 环境准备
 
+### 1. 安装依赖（Ubuntu/Debian）
+```bash
+apt update
+apt install docker.io docker-compose -y
+systemctl start docker
+systemctl enable docker
+
 ### 下载 Vulhub 靶场
 
 ```
 git clone https://github.com/vulhub/vulhub.git
 cd vulhub
-```
 
-依赖：docker、docker‑compose
 
 ### 通用操作
 
