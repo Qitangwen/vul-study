@@ -15,8 +15,11 @@
 
 ## 三、靶场启动
 进入漏洞目录并启动靶场：
+```
 cd vulhub/redis/4-unacc
 docker-compose up -d
+```
+
 ![进入靶场目录](images/1.png)
 ![docker‑compose启动靶场，docker‑ps查看运行容器](images/2.png)
 
