@@ -14,7 +14,6 @@ Redis服务若配置对外监听0.0.0.0，并且没有设置访问密码，攻�
 cd vulhub/redis/4-unacc
 docker‑compose up -d
 ```
-靶机容器 IP：172.18.0.2
 
 ## 复现步骤
 
