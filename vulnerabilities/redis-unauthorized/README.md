@@ -3,6 +3,10 @@
 Redis服务若配置对外监听0.0.0.0，并且没有设置访问密码，攻击者可无需认证直接远程连接Redis。可以读取内部数据，还可以利用Redis写文件功能，向服务器写入SSH公钥、WebShell，最终实现服务器权限获取。漏洞端口：6379
 
 ## 靶场环境启动
+
+进入漏洞目录：
+![进入靶场目录](images/1.png)
+
 ```bash
 cd vulhub/redis/4-unacc
 docker‑compose up -d
