@@ -61,7 +61,7 @@ set test "hello redis"  # 在 Redis 中设置一个键值对：test = "hello red
 bgsave    # 触发持久化（写入磁盘）
 ```
 
-查看是否写入
+验证确认能写入
 
 ![测试](images/7.png)
 
