@@ -27,7 +27,7 @@ yum install -y redis
 
 1. 使用 redis‑cli 客户端直接连接目标，不需要输入密码
 ```
-redis‑cli -h 靶机容器IP -p 端口
+redis‑cli -h 靶机IP -p 端口
 
 redis‑cli -h 172.18.0.2 -p 6379
 ```
