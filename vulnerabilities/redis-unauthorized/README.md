@@ -36,7 +36,7 @@ redis‑cli -h 172.18.0.2
 ```
 info
 ```
-(images/5.png)
+!(images/5.png)
 漏洞现象：没有密码校验，可以看到 redis 版本、操作系统等信息，说明已经成功进入 Redis，存在未授权访问
 
 3. 获取全部 key 数据
