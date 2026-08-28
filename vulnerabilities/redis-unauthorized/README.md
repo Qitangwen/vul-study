@@ -32,6 +32,8 @@ yum install -y redis
 
 ![yum安装redis客户端](images/3.png)
 
+最后出现 Complete 即安装完成
+
 安装完成后可使用redis-cli 远程连接目标服务。
 
 2. 未授权连接验证
