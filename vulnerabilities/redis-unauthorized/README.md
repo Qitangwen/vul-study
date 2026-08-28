@@ -23,7 +23,7 @@ yum install -y redis
 ```
 宿主机安装 redis 客户端，提供 redis‑cli 命令用于连接靶场Redis服务
 ![yum安装redis客户端](images/3.png)
-最后出现Complete安装完成
+（图片太长，只截图前半段）最后出现Complete安装完成
 
 1. 使用 redis‑cli 客户端直接连接目标，不需要输入密码
 ```
