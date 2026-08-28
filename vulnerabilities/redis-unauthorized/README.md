@@ -53,12 +53,14 @@ info
 
 
 ···bash
+
 config get dir           # 当前数据存储目录：/data
 config get dbfilename    # 当前 RDB 文件名：dump.rdb
 config set dir /tmp      # 将数据存储目录改为 /tmp
 config set dbfilename "exp.txt"  # 将文件名改为 exp.txt
 set test "hello redis"   # 在 Redis 中设置一个键值对：test = "hello redis"
 bgsave      # 触发持久化（写入磁盘）
+
 ···
 
 
