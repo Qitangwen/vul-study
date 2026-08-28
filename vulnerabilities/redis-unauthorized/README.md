@@ -27,10 +27,9 @@ yum install -y redis
 
 1. 使用 redis‑cli 客户端直接连接目标，不需要输入密码
 ```
-redis‑cli -h靶机容器IP
-通过docker inspect 得到容器IP为 172.18.0.2
+redis‑cli -h 靶机容器IP -p 端口
 
-redis‑cli -h 172.18.0.2
+redis‑cli -h 172.18.0.2 -p 6379
 ```
 2. 连接成功后执行 info 命令
 ```
