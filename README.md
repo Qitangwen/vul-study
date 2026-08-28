@@ -5,7 +5,7 @@
 
 ## 环境准备
 
-### 安装依赖（Ubuntu/Debian）
+### 安装依赖
 ```bash
 apt update
 apt install docker.io docker-compose -y
