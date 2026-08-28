@@ -23,4 +23,8 @@ docker-compose down       # 关闭销毁靶场
 
 ---
 
+## 漏洞列表
+1. [Redis未授权访问漏洞](./vulnerabilities/redis-unauthorized/README.md)
+2. 待复现
+3. 待复现
 
