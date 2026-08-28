@@ -7,6 +7,9 @@ Redis服务若配置对外监听0.0.0.0，并且没有设置访问密码，攻�
 进入漏洞目录：
 ![进入靶场目录](images/1.png)
 
+执行命令启动靶场
+![docker‑compose启动靶场，docker‑ps查看运行容器](images/2.png)
+
 ```bash
 cd vulhub/redis/4-unacc
 docker‑compose up -d
