@@ -32,6 +32,6 @@ docker-compose down       # 关闭销毁靶场
 
 ## 漏洞列表
 1. [Redis未授权访问漏洞](./vulnerabilities/redis-unauthorized/README.md)
-2. [Log4j2注入远程代码执行漏洞](./vulnerabilities/redis-unauthorized/README.md)
+2. [Log4j2注入远程代码执行漏洞](./vulnerabilities/log4j2-CVE-2021-44228/README.md)
 3. 待复现
 
