@@ -39,7 +39,8 @@ docker-compose down       # 关闭销毁靶场
 
 
 ## 仓库目录
-- vulnerabilities：存放各个漏洞完整复现文档
+
+[vulnerabilities：存放各个漏洞完整复现文档](./vulnerabilities/)
 
 
 
